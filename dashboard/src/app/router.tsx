@@ -33,6 +33,7 @@ const NodeWireGuard = lazyWithChunkRecovery(() => import('../pages/_dashboard.no
 const Settings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings'))
 const CleanupSettings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings.cleanup'))
 const GeneralSettings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings.general'))
+const InboundRatiosSettings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings.inboundsratios'))
 const HwidSettings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings.hwid'))
 const NotificationSettings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings.notifications'))
 const SubscriptionSettings = lazyWithChunkRecovery(() => import('../pages/_dashboard.settings.subscriptions'))
@@ -135,6 +136,14 @@ export const router = createHashRouter([
             <Hosts />
           </Suspense>
         ),
+      },
+      {
+        path: '/inbounds',
+        element: <Navigate to="/settings/inboundsratios" replace />,
+      },
+      {
+        path: '/settings/inbounds',
+        element: <Navigate to="/settings/inboundsratios" replace />,
       },
       {
         path: '/nodes',
@@ -336,6 +345,14 @@ export const router = createHashRouter([
             element: (
               <Suspense fallback={<LoadingSpinner />}>
                 <ThemePage />
+              </Suspense>
+            ),
+          },
+          {
+            path: '/settings/inboundsratios',
+            element: (
+              <Suspense fallback={<LoadingSpinner />}>
+                <InboundRatiosSettings />
               </Suspense>
             ),
           },

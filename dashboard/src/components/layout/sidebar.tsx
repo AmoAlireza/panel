@@ -380,6 +380,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             url: '/settings/theme',
             icon: Palette,
           },
+          ...(canReadResourcePage(admin, 'hosts')
+            ? [
+                {
+                  title: 'settings.inbounds.title',
+                  url: '/settings/inboundsratios',
+                  icon: Network,
+                },
+              ]
+            : []),
         ],
       },
     ],

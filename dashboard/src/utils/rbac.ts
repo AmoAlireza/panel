@@ -74,6 +74,7 @@ export const canAccessRoute = (admin: AdminDetails | null | undefined, pathname:
   if (pathname.startsWith('/users')) return hasPermission(admin, 'users', 'read')
   if (pathname.startsWith('/statistics')) return hasPermission(admin, 'nodes', 'stats')
   if (pathname.startsWith('/hosts')) return canReadResourcePage(admin, 'hosts')
+  if (pathname.startsWith('/inbounds')) return canReadResourcePage(admin, 'hosts')
   if (pathname.startsWith('/groups')) return canReadResourcePage(admin, 'groups')
   if (pathname === '/templates') return canReadResourcePage(admin, 'templates') || canReadResourcePage(admin, 'client_templates')
   if (pathname.startsWith('/templates/client')) return canReadResourcePage(admin, 'client_templates')
@@ -89,6 +90,7 @@ export const canAccessRoute = (admin: AdminDetails | null | undefined, pathname:
   if (pathname.startsWith('/nodes/logs')) return hasPermission(admin, 'nodes', 'logs')
   if (pathname === '/nodes') return canReadResourcePage(admin, 'nodes')
   if (pathname.startsWith('/nodes')) return canReadResourcePage(admin, 'nodes')
+  if (pathname.startsWith('/settings/inboundsratios') || pathname === '/settings/inbounds') return canReadResourcePage(admin, 'hosts')
   if (pathname.startsWith('/settings/general')) return hasPermission(admin, 'settings', 'read_general') && hasPermission(admin, 'settings', 'update')
   if (pathname.startsWith('/settings')) {
     if (pathname === '/settings') return true
